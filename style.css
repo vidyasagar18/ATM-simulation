@@ -1,48 +1,37 @@
 body {
     font-family: Arial, sans-serif;
+    background: url("assets/atm-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
-    margin: 0;
+    color: #fff;
 }
 
 .atm-container {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.7);
+    width: 350px;
     text-align: center;
+}
+
+.logo {
+    max-width: 100px;
+    margin-bottom: 20px;
 }
 
 #screen {
     margin-bottom: 20px;
-    background: #222;
+    background: #333;
     padding: 15px;
-    border-radius: 5px;
-    min-height: 50px;
-}
-
-button {
-    padding: 10px 15px;
-    margin: 10px 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 1em;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.hidden {
-    display: none;
+    border-radius: 10px;
+    min-height: 60px;
+    font-size: 1.1em;
 }
 
 input {
@@ -52,4 +41,48 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: url("assets/button-bg.png") no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    font-size: 1em;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none;
+}
+
+#transaction-history {
+    margin-top: 20px;
+    text-align: left;
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#history-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#history-list li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+#history-list li:last-child {
+    border-bottom: none;
 }
