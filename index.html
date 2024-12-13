@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="atm-container">
+        <img src="assets/logo.png" alt="ATM Logo" class="logo">
         <h1>ATM Simulator</h1>
         <div id="screen">
             <p>Please insert your card and enter your PIN.</p>
@@ -19,12 +20,19 @@
             <button data-option="1">Check Balance</button>
             <button data-option="2">Withdraw</button>
             <button data-option="3">Deposit</button>
-            <button data-option="4">Exit</button>
+            <button data-option="4">View Transactions</button>
+            <button data-option="5">Exit</button>
         </div>
 
         <div id="transaction" class="hidden">
             <input type="number" id="amount" placeholder="Enter Amount">
             <button id="confirm-transaction">Confirm</button>
+        </div>
+
+        <div id="transaction-history" class="hidden">
+            <h2>Transaction History</h2>
+            <ul id="history-list"></ul>
+            <button id="close-history">Close</button>
         </div>
     </div>
     <script src="script.js"></script>
