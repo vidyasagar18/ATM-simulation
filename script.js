@@ -1,5 +1,6 @@
 let balance = 5000;
 const password = 9999;
+const transactions = [];
 
 const screen = document.getElementById("screen");
 const pinInput = document.getElementById("pin");
@@ -8,6 +9,9 @@ const options = document.getElementById("options");
 const transaction = document.getElementById("transaction");
 const amountInput = document.getElementById("amount");
 const confirmTransactionButton = document.getElementById("confirm-transaction");
+const transactionHistory = document.getElementById("transaction-history");
+const historyList = document.getElementById("history-list");
+const closeHistoryButton = document.getElementById("close-history");
 
 let selectedOption = null;
 
@@ -29,6 +33,7 @@ options.addEventListener("click", (e) => {
 
     selectedOption = parseInt(option);
     transaction.classList.add("hidden");
+    transactionHistory.classList.add("hidden");
     amountInput.value = "";
 
     if (selectedOption === 1) {
@@ -40,6 +45,8 @@ options.addEventListener("click", (e) => {
         screen.innerHTML = `<p>Enter the amount to deposit:</p>`;
         transaction.classList.remove("hidden");
     } else if (selectedOption === 4) {
+        displayTransactionHistory();
+    } else if (selectedOption === 5) {
         screen.innerHTML = `<p>Thank you for using our ATM!</p>`;
         options.classList.add("hidden");
         pinInput.classList.remove("hidden");
@@ -59,12 +66,23 @@ confirmTransactionButton.addEventListener("click", () => {
             screen.innerHTML = `<p>Insufficient balance.</p>`;
         } else {
             balance -= amount;
+            transactions.push(`Withdrawn: $${amount}`);
             screen.innerHTML = `<p>${amount} has been withdrawn. Your updated balance is $${balance}.</p>`;
         }
     } else if (selectedOption === 3) {
         balance += amount;
+        transactions.push(`Deposited: $${amount}`);
         screen.innerHTML = `<p>${amount} has been deposited. Your updated balance is $${balance}.</p>`;
     }
 
     transaction.classList.add("hidden");
+});
+
+function displayTransactionHistory() {
+    historyList.innerHTML = transactions.map(t => `<li>${t}</li>`).join("");
+    transactionHistory.classList.remove("hidden");
+}
+
+closeHistoryButton.addEventListener("click", () => {
+    transactionHistory.classList.add("hidden");
 });
